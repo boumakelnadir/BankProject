@@ -4,7 +4,7 @@
 #include<string>
 #include<vector>
 
-// ÊİÊÑÖ åĞå ÇáãßÊÈÇÊ Ãä MyReadPositiveNumber ãæÌæÏÉ åäÇ
+
 #include "MyUnputLib.h"
 #include "MyDateLib.h"
 
@@ -15,21 +15,13 @@ using namespace MyDateLib;
 const string ClientsFileName = "Client.txt";
 const string UserFileName = "Users.txt";
 
-// **********************************************
-// ********* ÇáÏæÇá ÇáãÓÇÚÏÉ ÇáãõÚáä ÚäåÇ ãõÓÈŞÇğ *********
-// **********************************************
 
-// ÅÚáÇä ãõÓÈŞ ááÏæÇá ÇáÊí ÊÍÊÇÌ Åáì ãÚÑİÊåÇ
 void ShowTransationsMenueScreen();
 void LogInScreen();
 void ShowManageUserMenueScreen();
 bool UserExistsByUsername(string UserName, string UserFileName);
 void ShowMainMenueScreen();
-vector <string> SplitStringClient(string Line, string Separator); // Êã ÇáÅÈŞÇÁ ÚáíåÇ åäÇ æáßä ÓíÊã äŞá ÇáÊÚÑíİ
-
-// **********************************************
-// ******************* ÇáåíÇßá (Structs) *******************
-// **********************************************
+vector <string> SplitStringClient(string Line, string Separator);
 
 struct stUser {
 	string UserName,
@@ -38,7 +30,7 @@ struct stUser {
 	bool MarkForDelete = false;
 };
 
-stUser CurrentUser; // ãáÇÍÙÉ: íİÖá ÊÌäÈ ÇáãÊÛíÑÇÊ ÇáÚÇãÉ ãËá CurrentUser
+stUser CurrentUser; 
 
 enum enMainMenueOptions
 {
@@ -81,11 +73,6 @@ struct stClient {
 	bool MarkForDelete = 0;
 };
 
-// **********************************************
-// ************* ÏæÇá ÊŞÓíã ÇáäÕæÕ æÇáÊÍæíá *************
-// **********************************************
-
-// ** Êã äŞá ÇáÊÚÑíİ åäÇ áíÓÈŞ ConvertLineToRecordUser **
 vector <string> SplitStringClient(string Line, string Separator)
 {
 	vector <string> vString;
@@ -118,7 +105,7 @@ stUser ConvertLineToRecordUser(string Line, string Separator = "#//#")
 
 	User.UserName = vUserData[0];
 	User.Password = vUserData[1];
-	// ÇáÊÃßÏ ãä Ãä ÇáÊÍæíá Åáì ÚÏÏ ÕÍíÍ Âãä
+ 
 	if (vUserData.size() > 2)
 		User.Permission = stoi(vUserData[2]);
 
@@ -140,15 +127,11 @@ stClient ConvertLineToRecordClient(string Line, string Separator = "#//#")
 	return Client;
 }
 
-// **********************************************
-// **************** ÏæÇá ŞÑÇÁÉ ÇáÈíÇäÇÊ ***************
-// **********************************************
-
 string ReadUsername(string msg)
 {
 	string user;
 	cout << msg;
-	// ÇÓÊÎÏÇã getline(cin >> ws, user) ÕÍíÍ áßä íÌÈ ÇáÇäÊÈÇå áÊÈÚÇÊå
+	 
 	getline(cin >> ws, user);
 	return user;
 }
@@ -166,13 +149,9 @@ string ReadClientAccountNumber(string msg)
 {
 	string AccountNumbr;
 	cout << msg;
-	cin >> ws >> AccountNumbr; // ÇÓÊÎÏÇã cin >> ws >> var áŞÑÇÁÉ ßáãÉ æÇÍÏÉ/ÑŞã ÈÚÏ ÊÌÇåá ÇáİÑÇÛÇÊ
+	cin >> ws >> AccountNumbr; 
 	return AccountNumbr;
 }
-
-// **********************************************
-// **************** ÏæÇá ÇáÊÍãíá æÇáÈÍË ****************
-// **********************************************
 
 vector <stUser> LoadUsersDataFromfile(string UsersFileName)
 {
@@ -187,8 +166,7 @@ vector <stUser> LoadUsersDataFromfile(string UsersFileName)
 
 		while (getline(UserFile, Line))
 		{
-			// ** åäÇ Êã ÇÓÊÎÏÇã CurrentUser ãÄŞÊÇğ áÊÎÒíä ÇáÓÌá Ëã ÅÖÇİÊå Åáì ÇáÜ vector. íİÖá ÊÌäÈ Ğáß. **
-			// ** ÇáÍá ÇáÃİÖá åæ ÇÓÊÎÏÇã ãÊÛíÑ ãÍáí **
+			 
 			stUser User = ConvertLineToRecordUser(Line);
 			vUser.push_back(User);
 		}
@@ -219,7 +197,6 @@ vector <stClient> LoadClientFromfile(string ClientFileName)
 	return vClient;
 }
 
-// ** Êã ÊÚÏíá ÇáÏÇáÉ áÊÃÎĞ ãÑÌÚ stUser& User áÊÚíÏ ÈíÇäÇÊ ÇáãÓÊÎÏã ÇáĞí Êã ÇáÚËæÑ Úáíå **
 bool FindUserByUsernameAndPassword(string UserName, string Password, stUser& User)
 {
 	vector <stUser> vUser = LoadUsersDataFromfile(UserFileName);
@@ -235,7 +212,6 @@ bool FindUserByUsernameAndPassword(string UserName, string Password, stUser& Use
 	return 0;
 }
 
-// ** Êã ÊÚÏíá ÇáÏÇáÉ áÊÃÎĞ ãÑÌÚ stUser& User áÊÚíÏ ÈíÇäÇÊ ÇáãÓÊÎÏã ÇáĞí Êã ÇáÚËæÑ Úáíå **
 bool FindUserByUsername(string Username, stUser& User)
 {
 	vector <stUser> vUser = LoadUsersDataFromfile(UserFileName);
@@ -244,7 +220,7 @@ bool FindUserByUsername(string Username, stUser& User)
 	{
 		if (C.UserName == Username)
 		{
-			User = C; // íÊã ÊÎÒíä ÇáãÓÊÎÏã ÇáĞí Êã ÇáÚËæÑ Úáíå İí ÇáãÊÛíÑ ÇáãÑÌÚí
+			User = C; 
 			return 1;
 		}
 
@@ -302,10 +278,6 @@ bool CheckAccessPermission(enMainMenuePermissions Permission)
 		return 0;
 
 }
-
-// **********************************************
-// **************** ÏæÇá ÇáÊÍæíá æÇáÊÎÒíä ****************
-// **********************************************
 
 string ConvertRecordToLineClient(stClient Client, string Separator = "#//#")
 {
@@ -379,10 +351,6 @@ void SaveUserDataToFile(vector <stUser> vUser, string UserFileName)
 	}
 	File.close();
 }
-
-// **********************************************
-// **************** ÏæÇá ÇáÅÏÎÇá æÇáŞÑÇÁÉ ****************
-// **********************************************
 
 int ReadPermissionToSet()
 {
@@ -482,10 +450,10 @@ stClient ReadNewClient()
 
 stUser ReadNewUser()
 {
-	stUser User; // ÇÓÊÎÏÇã ãÊÛíÑ ãÍáí
+	stUser User;  
 
 	cout << "\nEnter Username : ";
-	// ** Êã ÊÕÍíÍ ØÑíŞÉ ÇáŞÑÇÁÉ **
+	 
 	getline(cin >> ws, User.UserName);
 
 	while (UserExistsByUsername(User.UserName, UserFileName))
@@ -495,10 +463,10 @@ stUser ReadNewUser()
 	}
 
 	cout << "\nEnter Password : ";
-	// ** Êã ÊÕÍíÍ ØÑíŞÉ ÇáŞÑÇÁÉ **
+	 
 	getline(cin >> ws, User.Password);
 
-	//add Permissions
+	 
 	User.Permission = ReadPermissionToSet();
 
 	return User;
@@ -532,17 +500,13 @@ stUser ChangeUserRecord(string Username)
 	User.UserName = Username;
 
 	cout << "\nEnter Password : ";
-	cin >> ws >> User.Password; // ÇÓÊÎÏÇã cin >> ws >> var áŞÑÇÁÉ ßáãÉ æÇÍÏÉ/ÑŞã ÈÚÏ ÊÌÇåá ÇáİÑÇÛÇÊ
+	cin >> ws >> User.Password; 
 
 	User.Permission = ReadPermissionToSet();
 
 	return User;
 }
-
-// **********************************************
-// ****************** ÏæÇá ÇáÔÇÔÇÊ ******************
-// **********************************************
-
+ 
 void GoBackToMainScreen()
 {
 	cout << "\n\nPress Any Key To go back to main Menue ....";
@@ -872,7 +836,7 @@ void DepositScreen(string AccountNumber)
 	stClient Client;
 	vector <stClient> vClient = LoadClientFromfile(ClientsFileName);
 
-	// ÍáŞÉ ÇáÈÍË æÇáÊÃßÏ ãä æÌæÏ ÇáÚãíá
+	 
 	if (!FindClientByAccountNumber(AccountNumber, vClient, Client))
 	{
 		while (!FindClientByAccountNumber(AccountNumber, vClient, Client))
@@ -896,7 +860,7 @@ void ShowDepositScreen()
 void WithdrawClientByAccountNumber(string AccountNumber, vector<stClient>& vClient, stClient Client)
 {
 	char Answer = 'n';
-	float Withdraw; // íÌÈ Ãä íßæä float áíÊäÇÓÈ ãÚ Balance
+	float Withdraw;  
 
 	for (stClient& C : vClient)
 	{
@@ -933,7 +897,7 @@ void WithdrawtScreen(string AccountNumber)
 	stClient Client;
 	vector <stClient> vClient = LoadClientFromfile(ClientsFileName);
 
-	// ÍáŞÉ ÇáÈÍË æÇáÊÃßÏ ãä æÌæÏ ÇáÚãíá
+	 
 	if (!FindClientByAccountNumber(AccountNumber, vClient, Client))
 	{
 		while (!FindClientByAccountNumber(AccountNumber, vClient, Client))
@@ -963,7 +927,7 @@ void PrintBalancesClientRecordLine(stClient Client)
 
 void ShowTotalBalancesScreen()
 {
-	// ** Êã ÊÕÍíÍ äæÚ TotalBalances Åáì float **
+	 
 	float TotalBalances = 0.0;
 	vector <stClient> vClient = LoadClientFromfile(ClientsFileName);
 
@@ -1085,7 +1049,7 @@ bool UserExistsByUsername(string UserName, string UserFileName)
 	if (File.is_open())
 	{
 		string Line;
-		stUser User; // ãÊÛíÑ ãÍáí ááÈÍË
+		stUser User;  
 
 		while (getline(File, Line))
 		{
@@ -1106,7 +1070,7 @@ void AddNewUser()
 {
 	stUser NewUser;
 	
-	NewUser = ReadNewUser(); // ÇÓÊÎÏÇã ãÊÛíÑ ãÍáí
+	NewUser = ReadNewUser();  
 
 	SaveDataLineToFile(UserFileName, ConvertRecordToLineUser(NewUser));
 }
@@ -1168,9 +1132,9 @@ void DeletedAndSaveDataUserToFile(vector <stUser> vUser, string UserFileName)
 void DeleteUserByUserName(string Username, vector <stUser> vUser)
 {
 	char Answer = 'n';
-	stUser User; // ãÊÛíÑ ãÍáí
+	stUser User; 
 
-	if (FindUserByUsername(Username, User)) // ÇáÈÍË æÊÎÒíä ÇáãÓÊÎÏã İí User
+	if (FindUserByUsername(Username, User))  
 	{
 		if (Username != "Admin")
 		{
@@ -1214,9 +1178,9 @@ void ShowDeleteUserScreen()
 void UpdateUserByUsername(string Username, vector<stUser> vUser)
 {
 	char Answer = 'n';
-	stUser User; // ãÊÛíÑ ãÍáí
+	stUser User;  
 
-	if (FindUserByUsername(Username, User)) // ÇáÈÍË æÊÎÒíä ÇáãÓÊÎÏã İí User
+	if (FindUserByUsername(Username, User))  
 	{
 		PrintCardUser(User);
 
@@ -1260,9 +1224,9 @@ void ShowFindUserScreen()
 	CardScreen("Find User Screen");
 
 	string Username = ReadUsername("\nPlease Enter Username ? ");
-	stUser User; // ãÊÛíÑ ãÍáí
+	stUser User;  
 
-	if (FindUserByUsername(Username, User)) // ÇáÈÍË æÊÎÒíä ÇáãÓÊÎÏã İí User
+	if (FindUserByUsername(Username, User)) 
 	{
 		PrintCardUser(User);
 	}
@@ -1438,7 +1402,7 @@ void ShowMainMenueScreen()
 
 bool LoadUserInfo(string Username, string Password)
 {
-	// ** íÊã ÊÎÒíä ãÚáæãÇÊ ÇáãÓÊÎÏã ÇáĞí ŞÇã ÈÊÓÌíá ÇáÏÎæá ÈäÌÇÍ İí ÇáãÊÛíÑ ÇáÚÇã CurrentUser **
+	 
 	if (FindUserByUsernameAndPassword(Username, Password, CurrentUser))
 		return true;
 	else
@@ -1450,7 +1414,7 @@ void LogInScreen()
 	string UserName, Password;
 	bool FailLogin = false;
 
-	// ** Êã ÊÚÏíá ãäØŞ ÇáØÈÇÚÉ **
+	 
 	do {
 		ClearScreen();
 		CardScreen("Log In Screen");
@@ -1464,7 +1428,7 @@ void LogInScreen()
 		cout << "\nEnter Password ? ";
 		getline(cin >> ws, Password);
 
-		// ÇáÊÍŞŞ æÊÍÏíË ÍÇáÉ İÔá ÊÓÌíá ÇáÏÎæá
+		 
 		FailLogin = !LoadUserInfo(UserName, Password);
 
 	} while (FailLogin);

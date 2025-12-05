@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <ctime> // ≈÷«›… ·÷„«‰ ⁄„· time() Ê localtime()
+#include <ctime> 
 
 #pragma warning(disable : 4996)
 
@@ -75,7 +75,7 @@ namespace MyDateLib
 
 		Date.Year = EnterUser("Enter The Year : ");
 
-		// «· Õﬁﬁ „‰ ’·«ÕÌ… «·ÌÊ„ ›Ì ‘Â— ›»—«Ì—  ÕœÌœ«
+		
 		if (Date.Month == 2 && Date.Day > NumberOfDaysInMonth(Date.Month, Date.Year))
 		{
 			cout << "\nError: Day max is "
@@ -160,7 +160,7 @@ namespace MyDateLib
 
 	stDate IncreaseDateByXDays(short Days, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 1; i <= Days; i++)
 		{
 			Date = IncreaseDateByOneDay(Date);
@@ -170,12 +170,12 @@ namespace MyDateLib
 
 	stDate IncreaseDateByOneWeek(stDate Date)
 	{
-		return IncreaseDateByXDays(7, Date); // «” Œœ«„ œ«·… IncreaseDateByXDays
+		return IncreaseDateByXDays(7, Date); 
 	}
 
 	stDate IncreaseDateByXWeeks(short Weeks, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 1; i <= Weeks; i++)
 		{
 			Date = IncreaseDateByOneWeek(Date);
@@ -204,7 +204,7 @@ namespace MyDateLib
 
 	stDate IncreaseDateByXMonths(short Months, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 0; i < Months; i++)
 		{
 			Date = IncreaseDateByOneMonth(Date);
@@ -216,7 +216,7 @@ namespace MyDateLib
 	stDate IncreaseDateByOneYear(stDate Date)
 	{
 		Date.Year++;
-		//  ’ÕÌÕ: ≈–« ﬂ«‰ «·ÌÊ„ 29 ›»—«Ì— Ê ÕÊ· ≈·Ï ”‰… €Ì— ﬂ»Ì”…° Ì’»Õ 28 ›»—«Ì—
+		
 		if (Date.Month == 2 && Date.Day == 29 && !IsLeapYear(Date.Year))
 		{
 			Date.Day = 28;
@@ -226,7 +226,7 @@ namespace MyDateLib
 
 	stDate IncreaseDateByXYears(short Years, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 0; i < Years; i++)
 		{
 			Date = IncreaseDateByOneYear(Date);
@@ -237,7 +237,7 @@ namespace MyDateLib
 	stDate IncreaseDateByXYearsFaster(short Years, stDate Date)
 	{
 		Date.Year += Years;
-		//  ’ÕÌÕ: ≈–« ﬂ«‰ «·ÌÊ„ 29 ›»—«Ì— Ê ÕÊ· ≈·Ï ”‰… €Ì— ﬂ»Ì”…° Ì’»Õ 28 ›»—«Ì—
+		
 		if (Date.Month == 2 && Date.Day == 29 && !IsLeapYear(Date.Year))
 		{
 			Date.Day = 28;
@@ -252,8 +252,7 @@ namespace MyDateLib
 
 	stDate IncreaseDateByXDecades(short Decades, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
-		// ÌÃ» √‰  ﬂÊ‰ «·Õ·ﬁ… ⁄·Ï ⁄œœ «·”‰Ê«  «·≈Ã„«·Ì Ê·Ì” ⁄·Ï ⁄œœ «·⁄ﬁœ „÷—Ê»« »‹ 10
+		
 		for (short i = 0; i < Decades * 10; i++)
 		{
 			Date = IncreaseDateByOneYear(Date);
@@ -303,7 +302,7 @@ namespace MyDateLib
 
 	stDate DecreaseDateByXDays(short Days, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+
 		for (short i = 1; i <= Days; i++)
 		{
 			Date = DecreaseDateByOneDay(Date);
@@ -318,7 +317,7 @@ namespace MyDateLib
 
 	stDate DecreaseDateByXWeeks(short Weeks, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 1; i <= Weeks; i++)
 		{
 			Date = DecreaseDateByOneWeek(Date);
@@ -347,7 +346,7 @@ namespace MyDateLib
 
 	stDate DecreaseDateByXMonths(short Months, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 1; i <= Months; i++)
 		{
 			Date = DecreaseDateByOneMonth(Date);
@@ -364,7 +363,7 @@ namespace MyDateLib
 
 	stDate DecreaseDateByXYears(short Years, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 1; i <= Years; i++)
 		{
 			Date = DecreaseDateByOneYear(Date);
@@ -385,7 +384,7 @@ namespace MyDateLib
 
 	stDate DecreaseDateByXDecades(short Decades, stDate Date)
 	{
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 0; i < Decades * 10; i++)
 		{
 			Date = DecreaseDateByOneYear(Date);
@@ -463,7 +462,7 @@ namespace MyDateLib
 	{
 		short DaysInYear = 0;
 
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = Date.Month; i <= 12; i++)
 		{
 			DaysInYear += NumberOfDaysInMonth(i, Date.Year);
@@ -494,7 +493,7 @@ namespace MyDateLib
 			Date = IncreaseDateByOneDay(Date);
 		}
 
-		//  „ «· €ÌÌ— „‰ size_t ≈·Ï short · Ã‰» C4267
+		
 		for (short i = 0; i < VacationNeed + WeekEndcount; i++)
 		{
 			if (IsWeekEnd(Date))
@@ -532,7 +531,7 @@ namespace MyDateLib
 
 	bool IsOverLapPeriod(stPeriod Date1, stPeriod Date2)
 	{
-		// ·« ÌÊÃœ  œ«Œ· ≈–« ﬂ«‰  ‰Â«Ì… «·› —… 2 ﬁ»· »œ«Ì… «·› —… 1° √Ê »œ«Ì… «·› —… 2 »⁄œ ‰Â«Ì… «·› —… 1
+		
 		if (ComparedDates(Date2.End, Date1.Start) == enCompareDates::Before ||
 			ComparedDates(Date2.Start, Date1.End) == enCompareDates::After)
 			return false;
@@ -567,15 +566,15 @@ namespace MyDateLib
 			return 0;
 		}
 
-		//  ÕœÌœ › —… «·»œ¡ «· Ì ”‰ﬁÊ„ »«·⁄œ „‰Â« · Ã‰» «· ﬂ—«— ›Ì «·Õ”«»
+		
 		stDate StartDate = (ComparedDates(Period1.Start, Period2.Start) == enCompareDates::After)
 			? Period1.Start : Period2.Start;
 
-		//  ÕœÌœ › —… «·«‰ Â«¡ «· Ì ”‰ﬁÊ„ »«·⁄œ ≈·ÌÂ«
+		
 		stDate EndDate = (ComparedDates(Period1.End, Period2.End) == enCompareDates::Before)
 			? Period1.End : Period2.End;
 
-		// ‰Õ”» «·›—ﬁ »Ì‰  «—ÌŒÌ «· œ«Œ· (‘«„· ÌÊ„ «·‰Â«Ì…)
+		
 		OverlapDays = GetDifferencInDays(StartDate, EndDate, true);
 
 		return OverlapDays;
@@ -597,7 +596,7 @@ namespace MyDateLib
 	vector <string> SplitingString(string S, string Separator = "/")
 	{
 		vector <string> vString;
-		//  „ «· €ÌÌ— „‰ short ≈·Ï size_t ·· Ê«›ﬁ „⁄ find()
+		
 		size_t pos;
 		string token;
 
@@ -640,15 +639,14 @@ namespace MyDateLib
 
 	string ReplaceWordInString(string S1, string StringToReplace, string sRepalceTo)
 	{
-		//  „ «· €ÌÌ— „‰ short ≈·Ï size_t
+		
 		size_t pos = S1.find(StringToReplace);
 
-		//  ’ÕÌÕ: ÌÃ» √‰  ” „— «·Õ·ﬁ… Õ Ï ·«  Ãœ «·ﬂ·„… «·„—«œ «” »œ«·Â« (string::npos)
-		// Ê«· √ﬂœ „‰ ≈“«·… «·⁄Êœ… «·„»ﬂ—… (return) œ«Œ· «·Õ·ﬁ…
+		
 		while (pos != std::string::npos)
 		{
 			S1 = S1.replace(pos, StringToReplace.length(), sRepalceTo);
-			pos = S1.find(StringToReplace); //find next
+			pos = S1.find(StringToReplace); 
 		}
 		return S1;
 	}
