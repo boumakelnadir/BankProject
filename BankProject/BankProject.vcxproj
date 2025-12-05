@@ -130,6 +130,7 @@
     <ClCompile Include="BankProject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\nnoo\nnoo\MyDateLib.h" />
     <ClInclude Include="..\..\tt\tt\MyUnputLib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
