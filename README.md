@@ -1,26 +1,25 @@
-BankProject
+Project Title: Bank Management System (C++ Fundamentals)
 
-Project Name:
-Bank Project
+Description: A comprehensive C++ application designed to simulate core banking operations.
+This project serves as a practical implementation of fundamental and intermediate programming concepts, focusing on logic building, 
+memory efficiency, and clean code architecture.
 
+Key Features & Learning Milestones:
+
+Core Logic: Implemented banking functionalities using functions, loops, and conditional statements.
+
+Data Handling: Utilized Arrays, Vectors, and Strings to manage and process user data effectively.
+
+Memory Management: Explored the power of Pointers and memory allocation to understand how data is stored "under the hood."
+
+Algorithmic Thinking: Applied Recursion and complex problem-solving techniques to break down banking transactions into manageable modules.
+
+Clean Code: Focused on writing reusable, organized, and well-commented code following industry best practices.
 
 How to Run:
-Download the project and open it with Visual Studio Community 2022. Running it is simple and straightforward.
 
+Clone or download the repository.
 
-Purpose of This Project:
-This project was developed as part of my journey in learning C++. It helped deepen my understanding of several important concepts:
+Open the .sln file or the project folder in Visual Studio Community 2022.
 
-
-
-C++ Fundamentals: Applying concepts such as functions, data structures, arrays, and different data types.
-
-Fundamental Examples: Arrays, pointers, vectors, recursion, and strings.
-
-Memory Management: Gaining insights into effective control of memory (not all ideas are included in this project).
-
-Code Design: Writing clean and organized code that can be reused in future projects.
-
-Problem-Solving Skills: Practicing methodologies for breaking down complex problems into smaller, manageable tasks.
-
-Learning Objective: Integrating personal ideas with programming logic to create a practical application.
+Build and run the project (F5).
